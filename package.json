@@ -1,0 +1,21 @@
+{
+  "name": "project",
+  "version": "1.0.1",
+  "description": "Neptun:V04MEA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "legyenjójegyem"
+  ],
+  "author": "Fauszt András",
+  "license": "Beerware",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "express": "^4.14.1",
+    "jquery": "^3.1.1",
+    "mongodb": "^2.2.24"
+  },
+  "devDependencies": {}
+}
