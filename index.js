@@ -13,6 +13,7 @@ app.use(express.static('static'));
    res.tpl={};
    return next();
 });*/
+
 app.get('/pay',function(req, res, next){
         res.redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
     }
