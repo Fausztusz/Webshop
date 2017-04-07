@@ -1,15 +1,15 @@
 var mainRedirectMW = require('../middleware/generic/mainRedirect');
 var inverseAuthMW = require('../middleware/generic/inverseAuth');
-var checkUserLoginMW = require('../middleware/user/checkUserLogin');
-var checkUserRegistrationMW = require('../middleware/user/checkUserRegistration');
+var checkUserLoginMW = require('../middleware/generic/checkUserLogin');
+var checkUserRegistrationMW = require('../middleware/generic/checkUserRegistration');
 var renderMW = require('../middleware/generic/render');
 
-//var userModel = require('../models/user');
+var userModel = require('../models/user');
 
 module.exports = function (app) {
 
     var objectRepository = {
-       // userModel: userModel
+        userModel: userModel
     };
 
     /**

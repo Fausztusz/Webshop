@@ -17,7 +17,7 @@ module.exports = function (app) {
     /**
      * Show one product
      */
-    app.get('/product/:productID',
+    app.get('/product/:productid',
         authMW(objectRepository),
         getProductMW(objectRepository),
         //we need all the user to make a list of them for "reassign"
@@ -31,23 +31,23 @@ module.exports = function (app) {
      */
     app.get('/product/:productid',
         authMW(objectRepository),
-        getTaskMW(objectRepository),
-        updateCommentMW(objectRepository),
+        getProductMW(objectRepository),
+        updateProductMW(objectRepository),
         //simple redirect
         function (req, res, next) {
-            return res.redirect('/product/' + req.param('productid'));
+            return res.redirect('/createproduct');
         });
 
     /**
      * Edit product
      */
-    app.use('/product/:productid/edit',
-        authMW(objectRepository),
-        gotPermit(objectRepository),
-        getProductMW(objectRepository),
-        updateProductMW(objectRepository),
-        renderMW(objectRepository, 'productmod')
-    );
+    // app.use('/product/:productid/edit',
+    //     authMW(objectRepository),
+    //     gotPermit(objectRepository),
+    //     getProductMW(objectRepository),
+    //     updateProductMW(objectRepository),
+    //     renderMW(objectRepository, 'productmod')
+    // );
 
     /**
      * Delete product
@@ -59,6 +59,12 @@ module.exports = function (app) {
         deleteProductMW(objectRepository),
         //simple redirect
         function (req, res, next) {
-            return res.redirect('../static/createproduct.html');
+            return res.redirect('createproduct');
         });
+
+    app.use('/createproduct',
+        authMW(objectRepository),
+        getProductMW(objectRepository),
+        renderMW(objectRepository, 'createproduct')
+    );
 };
