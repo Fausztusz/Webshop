@@ -10,7 +10,7 @@ Product:
 
 User:
     {
-    userid: number/hash,
+    userid: number,
     username: string,
     pwd: hash,
     email: restricted format string,

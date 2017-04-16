@@ -10,7 +10,7 @@ module.exports = [
         userid: 2,
         name: 'Survive',
         description: 'The semester',
-        picture: './images/Survive.gif',
+        picture: 'https://media.giphy.com/media/rjWu7ks7deuxa/giphy.gif',
         price: 100
     },
     {

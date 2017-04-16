@@ -1,44 +1,28 @@
 var express = require('express');
 var app = express();
 
-var session = require('express-session');
+//For accessing POST request parameters
 var bodyParser = require('body-parser');
-// var path = require('path');
-
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/Webshop');
-var Cat = mongoose.model('Cat', {name: String});
-var kitty = new Cat({name: 'Zildjian'});
-kitty.save(function (err) {
-    console.log('meow');
-});
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 
 app.use(express.static('public'));
-
 app.set('view engine', 'ejs');
 
 /**
  * Session above all
  */
+var session = require('express-session');
 app.use(session({
-    secret: 'I double-dare you',
+    secret: 'I_double-dare_you',
     cookie: {
         maxAge: 60000
     },
     resave: true,
     saveUninitialized: false
-}));
-
-
-/**
- * Parse parameters in POST
- */
-// for parsing application/json
-app.use(bodyParser.json());
-// for parsing application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({
-    extended: true
 }));
 
 /**
@@ -56,11 +40,16 @@ require('./routes/products')(app);
 require('./routes/users')(app);
 require('./routes/webshop')(app);
 
-app.get('/pay', function (req, res, next) {
-        res.redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-    }
-);
+// Middleware for authentication
+var authMW = require('./middleware/generic/auth');
 
+//Middleware to redirect requests to /
+var mainRedirectMW = require('./middleware/generic/mainRedirect');
+
+app.get('/',
+    authMW(),
+    mainRedirectMW()
+);
 
 app.use(function (err, req, res, next) {
     //Mert mindig jobb egy Sam L. Jackson idézet mint egy hibaüzenet
@@ -78,6 +67,6 @@ app.use(function (err, req, res, next) {
     console.error(err.stack);
 });
 
-var server = app.listen(928, function () {
-    console.log('Listening to port 928')
+var server = app.listen(3000, function () {
+    console.log('Listening to port 3000')
 });

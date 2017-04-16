@@ -1,54 +1,28 @@
 /**
- * User model (mock)
- * @constructor
+ * The model of a User
  */
-var User = function () {
-};
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var product=require('./product');
+var userSchema = mongoose.Schema({
+    name: {type: String, required: true},
+    pwd: {type: String, required: true},
+    email: {type: String, required: true},
+    /*Role: 0 User,1 Admin*/
+    role: {type: Number, default: 0},
+    currency: {type: String, default: '$'},
+    picture: {type: String, default: './images/defaultavatar.jpg'},
+    regdate: {type: Date, default: Date.now, required: true},
+    cart: [
+        {
+        product: {type: Schema.Types.ObjectId,
+                    ref:'product'},
+        quantity: {type: Number}
+        }
+        /*More product...*/
+    ]
+});
 
-/**
- * An instance
- * @type {{id: number, name: string, email: string, pass: string, role: number}}
- */
-var UserInstanceMock = {
-    id: 1,
-    name: 'Lorem',
-    email: 'lorem@example.org',
-    pass: 'asdasd',
-    role:1
-
-};
-
-/**
- * Find one element with the criteria
- * @param criteria
- * @param cb error first callback
- * @returns {*}
- */
-User.prototype.findOne = function (criteria, cb) {
-
-    //returns 1 mocked item
-    return cb(null, UserInstanceMock);
-};
-
-/**
- * Find all elements with the criteria
- * @param criteria
- * @param cb error first callback
- * @returns {*}
- */
-User.prototype.find = function (criteria, cb) {
-
-    //returns 3 mocked item
-    return cb(null, [UserInstanceMock, UserInstanceMock, UserInstanceMock]);
-};
-
-/**
- * Save the item to the db
- * @param cb error first callback
- * @returns {*}
- */
-User.prototype.save = function (cb) {
-    return cb(null, this);
-};
+var User = mongoose.model('User', userSchema);
 
 module.exports = User;

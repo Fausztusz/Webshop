@@ -11,33 +11,6 @@ module.exports = function (objectrepository) {
     var productModel = requireOption(objectrepository, 'productModel');
 
     return function (req, res, next) {
-
-        /**
-         * Something like:
-         *  if ((typeof req.body.title === 'undefined') ||
-         *  (typeof req.body.description === 'undefined'))
-         *  {
-     *    return next();
-     *  }
-         *
-         *  var task = undefined;
-         *  if (typeof res.tpl.task !=='undefined') {
-     *     task = res.tpl.task;
-     *  }else{
-     *     task = new taskModel();
-     *  }
-         *  task.title = req.body.title;
-         *  task.description = req.body.description;
-         *
-         *  task.save(function(err,result){
-     *    if (err){
-     *      return next(err);
-     *    }
-     *
-     *    return res.redirect('/task/' + result.id);
-     *  )
-     */
-
         return next();
     };
 
