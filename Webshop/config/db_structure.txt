@@ -1,0 +1,26 @@
+db structure:
+Product:
+    {
+    productid: number/hash,
+    productName: string,
+    description: string,
+    picture: string/url/bson, :P
+    price: number,
+    }
+
+User:
+    {
+    userid: number,
+    username: string,
+    pwd: hash,
+    email: restricted format string,
+    profile-picture: string/url/bson, :D
+    cart:[
+        {   //one product
+        productid: number/hash,
+        quantity: number/int
+        },
+        //more product
+        ...
+        ]
+    }
