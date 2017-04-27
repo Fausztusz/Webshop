@@ -1,7 +1,7 @@
 /**
  * The model of a User
  */
-var mongoose = require('mongoose');
+var mongoose = require('../middleware/generic/db');
 var Schema = mongoose.Schema;
 var product=require('./product');
 var userSchema = mongoose.Schema({

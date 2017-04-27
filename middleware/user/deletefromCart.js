@@ -1,10 +1,7 @@
-var requireOption = require('../common').requireOption;
-
 /**
- * Delete item from the user's cart
+ * Delete product from the Users Cart
  */
 module.exports = function (objectrepository) {
-
     return function (req, res, next) {
 
 

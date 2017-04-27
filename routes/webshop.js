@@ -8,11 +8,13 @@ var deleteProductMW = require('../middleware/product/deleteProduct');
 var getUserListMW = require('../middleware/user/getUserList');
 
 var productModel = require('../models/product');
+var userModel = require('../models/user');
 
 module.exports = function (app) {
 
     var objectRepository = {
-        productModel: productModel
+        productModel: productModel,
+        userModel: userModel
     };
 
     /**
@@ -26,9 +28,15 @@ module.exports = function (app) {
     );
     app.use('/cart',
         authMW(objectRepository),
+        gotPermit(),
         getProductMW(objectRepository),
         renderMW(objectRepository, 'cart')
     );
+    app.use('/pay', function (req, res, next) {
+        res.redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+    });
+
+
 
 
 };

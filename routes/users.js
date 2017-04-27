@@ -25,9 +25,9 @@ module.exports = function (app) {
 
     app.use('/editusers',
         authMW(objectRepository),
+        gotPermit(),
         getUserListMW(objectRepository),
         renderMW(objectRepository, 'editusers')
     );
 };
 
-//tudom nincs kész de elmúlt éjfél és kedden dinamika ZH-m lesz :(

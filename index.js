@@ -31,6 +31,7 @@ app.use(session({
 app.use(function (req, res, next) {
     res.tpl = {};
     res.tpl.error = [];
+    res.tpl.msg = [];
 
     return next();
 });
@@ -54,14 +55,14 @@ app.get('/',
 app.use(function (err, req, res, next) {
     //Mert mindig jobb egy Sam L. Jackson idézet mint egy hibaüzenet
     res.status(500).send('The path of the righteous man is ' +
-        'beset on all sides by the iniquities of the selfish and the tyranny of evil men!' +
-        'Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness,' +
-        ' for he is truly his brother\'s keeper and the finder of lost children. ' +
-        'And I will strike down upon thee with great vengeance and furious anger' +
-        ' those who would attempt to poison and destroy' +
-        ' My brothers. And you will know My name is the Lord when I lay' +
-        ' My vengeance upon thee.' +
-        ' And btw an ERROR');
+        'beset on all sides by the iniquities of the selfish and the tyranny of evil men!<br>' +
+        'Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, ' +
+        'for he is truly his brother\'s keeper and the finder of lost children.<br>' +
+        'And I will strike down upon thee with great vengeance and furious anger ' +
+        'those who would attempt to poison and destroy ' +
+        'My brothers.<br> <h3> And you will know My name is the Lord when I lay ' +
+        'My vengeance upon thee. </h3>' +
+        '<h1>And btw you have an ERROR</h1>');
 
     //Flush out the stack to the console
     console.error(err.stack);

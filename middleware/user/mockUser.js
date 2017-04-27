@@ -1,20 +1,20 @@
 module.exports = [
     {
-        userid: 1,
+        _id: 1,
         role:1,
         name: 'Unshot Harambe',
-        picture: './images/Harambe.jpg',
+        picture: './images/Harambe.jpg'
     },
     {
-        userid: 2,
+        _id: 2,
         role:1,
         name: 'AstleyFan99',
-        picture: './images/nevergonnagiveyouup.jpg',
+        picture: './images/nevergonnagiveyouup.jpg'
     },
     {
-        userid: 3,
+        _id: 3,
         role:1,
         name: 'KermitTheGreatAndPowerful',
-        picture: './images/evilkermit.jpg',
+        picture: './images/evilkermit.jpg'
     }
 ];

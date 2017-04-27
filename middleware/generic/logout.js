@@ -3,13 +3,13 @@ var requireOption = require('../common').requireOption;
 /**
  * Ends current session and destroys the session-id.
  */
-
+var user = require('../../models/user');
 module.exports = function (objectrepository) {
 
     var userModel = requireOption(objectrepository, 'userModel');
-
     return function (req, res, next) {
-        return next();
+        req.session.user =undefined;
+        return res.redirect('/');
     };
 
 };

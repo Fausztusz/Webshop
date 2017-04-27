@@ -1,7 +1,7 @@
+var mongoose=require('../middleware/generic/db');
 /***
  * The model of a product
  */
-var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var productSchema = mongoose.Schema({
     name: {type: String, required: true},

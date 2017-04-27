@@ -2,7 +2,7 @@
  * Run once to populate the db
  */
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/Webshop');
+//mongoose.connect('mongodb://localhost/Webshop');
 var User = require('./models/user');
 var Product = require('./models/product');
 
