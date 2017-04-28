@@ -13,24 +13,23 @@ module.exports = function (objectrepository) {
             if (req.body.name.trim() && req.body.pwd.trim()) {
                 User.findOne(req.body).exec(function (err, user) {
                     // console.log('USER ', user, '/USER');
-                    if (err) {
-                        res.tpl.msg.push({type: "error", message: "Hiba történt. Nem tudtuk elvégezni a műveletet."});
+                    if (err) { //If the query runs into an error
+                        res.tpl.msg.push({type: "error", message: "Failed request"});
                         console.error(err);
                         return next();
                     }
-                    if (!user) {
-                        res.tpl.msg.push({type: "error", message: "Hiba történt. Rossz felhasználónév, vagy jelszó."});
+                    if (!user) { //If the user does not exist
+                        res.tpl.msg.push({type: "error", message: "Failed request"});
                         return next();
                     }
                     delete user.password;	//Remove the password from the user
                     req.session.user = user;
-                    res.tpl.role = user.role;
-                    res.tpl.msg.push({type: "success", message: "Sikeres bejelentkezés!"});
+                    res.tpl.msg.push({type: "success", message: "Successful login "});
                     return res.redirect('/');
                 });
             }
             else {
-                res.tpl.msg.push({type: "error", message: "Hiba történt. Töltsd ki a kötelező mezőket!"});
+                res.tpl.msg.push({type: "error", message: "Empty field"});
                 return next();
             }
         }

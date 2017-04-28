@@ -5,8 +5,12 @@
         <div style='background-image:url(<%= product.picture%>)' class="thumbnail custom"></div>
     </td>
     <td><%= product.price%>$</td>
-    <td><input id="<%product._id%>" type="number" min="0" value="0"></td>
+    <form action="/cart/add" method="post">
+    <td><input name="quantity" type="number" min="0" value="0" class="inputfield"></td>
+
+    <td class="total">0$</td>
     <td>
-        <button id="<%= product._id%>" class="btn btn-success custom">Add to cart</button>
+        <button name="_id" value="<%= product._id%>" id="submitButton" type="submit" class="btn btn-success custom">Add to cart</button>
     </td>
+    </form>
 </tr>

@@ -1,33 +1,26 @@
 /**
- * Get the product from the users by _id cart and put to to the res.tpl.product
+ * Get all product from the users cart
  */
-var requireOption = require('../common').requireOption;
-var User = require('../../models/user');
-var Product= require('../../models/product');
+var Product = require('../../models/product');
+
 module.exports = function (objectrepository) {
     return function (req, res, next) {
+        res.tpl.cart = [];
 
-
+        res.tpl.user.cart.forEach(function (item) {
+            Product.findById(item.product).exec(function (err, productid) {
+                if (err) {
+                    console.log('##### Failed query at getCart #####');
+                    console.log(err);
+                    //Handle the error
+                    next();
+                }
+                else {
+                    res.tpl.cart.push(productid);
+                    console.log('DONE');
+                }
+            });
+        });
         return next();
     };
-
 };
-
-/*
-var requireOption = require('../common').requireOption;
-var User = require('../../models/user');
-module.exports = function (objectrepository) {
-
-    //var userModel = requireOption(objectrepository, 'userModel');
-    return function (req, res, next) {
-        User.find({}).exec(function (err, users) {
-
-            if (err) {
-                console.error(err);
-                return res.redirect('/');
-            }
-            res.tpl.users = users;
-            return next();
-        });
-    };
-};*/

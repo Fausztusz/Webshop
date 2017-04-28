@@ -37,7 +37,6 @@ app.use(function (req, res, next) {
 });
 
 require('./routes/outside')(app);
-require('./routes/products')(app);
 require('./routes/users')(app);
 require('./routes/webshop')(app);
 
