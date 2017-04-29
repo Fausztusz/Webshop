@@ -3,8 +3,6 @@ var renderMW = require('../middleware/generic/render');
 var gotPermit = require('../middleware/generic/gotPermission');
 var mainRedirect = require('../middleware/generic/mainRedirect');
 
-var getUserbyIdMW = require('../middleware/user/getUserbyID');
-
 var getProductMW = require('../middleware/product/getProductList');
 var getProductbyIDMW = require('../middleware/product/getProductbyID');
 var updateProductMW = require('../middleware/product/updateProduct');
@@ -12,6 +10,7 @@ var deleteProductMW = require('../middleware/product/deleteProduct');
 var createProductMW = require('../middleware/product/createProduct');
 var getUserListMW = require('../middleware/user/getUserList');
 
+var getLoggedUser = require('../middleware/user/getLoggedUser');
 var addtoCartMW = require('../middleware/user/addtoCart');
 var getCartMW = require('../middleware/user/getCart');
 var deletefromCartMW = require('../middleware/user/deletefromCart');
@@ -60,7 +59,7 @@ module.exports = function (app) {
      */
     app.use('/cart',
         authMW(objectRepository),
-        getUserbyIdMW(objectRepository),
+        getLoggedUser(objectRepository),
         getCartMW(objectRepository),
         renderMW(objectRepository, 'cart')
     );

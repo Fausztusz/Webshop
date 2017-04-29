@@ -12,12 +12,13 @@ module.exports = function (objectrepository) {
                 if (err) {
                     console.log('##### Failed query at getCart #####');
                     console.log(err);
+                    res.tpl.cart={};
                     //Handle the error
                     next();
                 }
                 else if (product) {
-                    //Valamiért nem látszik a console.logban a mennyiség
                     product['quantity'] = item.quantity;
+                    product['identity'] = item._id;
                     res.tpl.cart.push(product);
                     done++;
                     if (done === res.tpl.user.cart.length) next();

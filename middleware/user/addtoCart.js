@@ -10,7 +10,7 @@ module.exports = function (objectrepository) {
         userid = req.session.user._id;
         produtid = req.body._id;
         quantity = req.body.quantity;
-        if (quantity !== 0 && produtid) {
+        if (quantity != 0 && produtid) {
             User.findByIdAndUpdate(userid, {
                 $push: {
                     cart: {
@@ -20,11 +20,17 @@ module.exports = function (objectrepository) {
                 }
             }, function (err, user) {
                 if (err) return handleError(err);
+
                 console.log('Succesfully updated the cart');
+                req.session.orderCount += 1;
+                return next();
             });
         }
-        else console.log('Failed to push to cart');
-        return next();
+        else {
+            console.log('Failed to push to cart');
+            return next();
+        }
+
     };
 
 };

@@ -4,7 +4,7 @@ var gotPermit=require('../middleware/generic/gotPermission');
 
 var getUserListMW = require('../middleware/user/getUserList');
 var deleteUserMW = require('../middleware/user/deleteUser');
-var editUserMW = require('../middleware/user/editUser');
+var editUserMW = require('../middleware/user/updateUser');
 var getUserbyIdMW = require('../middleware/user/getUserbyID');
 
 var userModel = require('../models/user');
@@ -15,6 +15,9 @@ module.exports = function (app) {
          userModel: userModel
     };
 
+    /**
+     * Delete a user
+     */
     app.use('/editusers/delete',
         authMW(objectRepository),
         gotPermit(objectRepository),
@@ -23,7 +26,9 @@ module.exports = function (app) {
         function (req, res, next) {
             return res.redirect('/editusers');
         });
-
+    /**
+     * Commit the update of a user
+     */
     app.use('/editusers/edit/submit',
         authMW(objectRepository),
         gotPermit(objectRepository),
@@ -32,15 +37,19 @@ module.exports = function (app) {
             res.redirect('/editusers');
         }
         );
-
+    /**
+     * Display a single user to edit
+     */
     app.use('/editusers/edit',
         authMW(objectRepository),
         gotPermit(objectRepository),
         getUserbyIdMW(objectRepository),
-        renderMW(objectRepository, 'edituser')
+        renderMW(objectRepository, 'updateUser')
         );
 
-
+    /**
+     * Display all users who could be edited
+     */
     app.use('/editusers',
         authMW(objectRepository),
         gotPermit(),

@@ -23,6 +23,7 @@ module.exports = function (objectrepository) {
                     }
                     delete user.password;	//Remove the password from the user
                     req.session.user = user;
+                    req.session.orderCount=user.cart.length;
                     res.tpl.msg.push({type: "success", message: "Successful login "});
                     return res.redirect('/');
                 });

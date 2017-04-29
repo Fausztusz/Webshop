@@ -76,3 +76,8 @@ button.payButton{
     font-size: 1em;
     width: 100%;
 }
+
+td{
+    font-size: 1.2em;
+    vertical-align: middle;
+}

@@ -8,12 +8,7 @@
     <td><%=product.quantity%></td>
     <td>
         <form method="post" action="/cart/delete">
-        <button name="product" value="<%=product._id%>" class="btn btn-warning custom">Remove</button>
-        </form>
-    </td>
-    <td>
-        <form method="post" action="/cart/edit">
-        <button name="product" value="<%= product._id%>" class="btn btn-primary custom">Edit</button>
+        <button name="_id" value="<%=product.identity%>" class="btn btn-warning custom">Remove</button>
         </form>
     </td>
 </tr>
