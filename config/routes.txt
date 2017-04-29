@@ -1,20 +1,20 @@
 middleware/product:
-GET + POST/product add -                    ||
-GET/product - list                          ||  CRD
-GET/product delete/:id -                    ||
-
-middleware/cart:
-GET + POST/cart/add                         ||
-GET/cart/delete/:id                         ||
-GET/cart/modify/:id                         ||  CRUD
-GET/cart -list                              ||
-GET/cart/buy ->finish shopping->redirect    ||
+POST/product create                          ||
+POST/product read -list                      ||  CRUD
+POST/product update                          ||
+POST/product delete                          ||
 
 middleware/users:
-GET/users -list                             ||  RD
-GET/users/delete/:id                        ||
+POST/user/read -list                         ||
+POST/user/update/                            ||  RUD
+POST/user/delete/                            ||
+
+middleware/users cart:
+POST/user/create -add to cart                ||
+POST/user/read -list                         ||  CRD
+POST/user/delete                             ||
 
 middleware/generic:
-GET/login                                   ||  Handle auth
-GET/logout                                  ||
-GET/- redirectToMainPage                    ||
+GET/login                                    ||
+GET/logout                                   ||  Handle auth
+GET/- redirectToMainPage                     ||

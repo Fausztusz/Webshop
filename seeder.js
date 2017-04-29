@@ -21,7 +21,7 @@ var users = [
         pwd: 'KeepItRolli\'n',
         role: 1,
         email: 'rick@roll.com',
-        picture: './images/nevergonnagiveyouup.jpg',
+        picture: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
         cart: []
     }),
     new User({
@@ -29,7 +29,7 @@ var users = [
         pwd: 'NotJustaPuppet',
         role: 0,
         email: 'great@powerful.com',
-        picture: './images/evilkermit.jpg',
+        picture: 'http://i2.kym-cdn.com/entries/icons/original/000/021/668/kermie.JPG',
         cart: []
     }),
     new User({
@@ -51,7 +51,7 @@ var products = [
     new Product({
         name: 'Succes Baby',
         description: 'Another succesful homework',
-        picture: './images/SuccessBaby.png',
+        picture: 'https://upload.wikimedia.org/wikipedia/en/f/ff/SuccessKid.jpg',
         price: 15
     }),
     new Product({
@@ -61,27 +61,33 @@ var products = [
         price: 100
     }),
     new Product({
+        name: 'Absolutely barbaric',
+        description: 'The error handling in this site',
+        picture: 'http://i0.kym-cdn.com/photos/images/newsfeed/001/209/105/7b2.jpeg',
+        price: 5
+    }),
+    new Product({
         name: 'Not my business Kermit',
         description: 'There is a lot of copy paste',
-        picture: './images/notmybusiness.jpg',
+        picture: 'https://media4.giphy.com/media/Wgx6zPreg4aac/200_s.gif',
         price: 35
     }),
     new Product({
         name: 'Pathetic',
         description: 'Classic Skinner',
-        picture: './images/pathetic.jpg',
+        picture: 'http://i2.kym-cdn.com/photos/images/original/001/211/614/e93.jpg',
         price: 25
     }),
     new Product({
-        name: 'Wubba Lubba Dubb Dub',
+        name: 'Wubba Lubba Dub Dub',
         description: 'I\'m in a great pain',
-        picture: './images/wubbalubbadubdub.jpg',
+        picture: 'https://ih0.redbubble.net/image.104525267.7495/flat,1000x1000,075,f.jpg',
         price: 35
     }),
     new Product({
         name: 'Confession Bear',
         description: 'Instant ragret',
-        picture: './images/confessionbear.jpg',
+        picture: 'https://imgflip.com/s/meme/Confession-Bear.jpg',
         price: 35
     })
 ];

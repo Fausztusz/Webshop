@@ -11,7 +11,7 @@ var userSchema = mongoose.Schema({
     /*Role: 0 User,1 Admin*/
     role: {type: Number, default: 0},
     currency: {type: String, default: '$'},
-    picture: {type: String, default: './images/defaultavatar.jpg'},
+    picture: {type: String, default: 'http://selfynomore.com/wp-content/themes/selfynomore_twentysixteen/images/no-image-found.jpg'},
     regdate: {type: Date, default: Date.now, required: true},
     cart: [
         {

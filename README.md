@@ -1,0 +1,19 @@
+# Házi feladat a Szerver Oldali JavaScript tárgyhoz
+
+#### Fauszt András Ákos 
+#####V04MEA
+
+
+## Feladat
+Egy webshop megvalósítása, ahol a felhasználók termékeket adhatnak a kosarukhoz
+Az adminok új terméket hozhatnak létre, szerkeszthetik vagy törölhetik azokat.
+Továbbá szerkeszthetik a többi felhasználót
+
+## Felhasznált technológiák
+* Node.JS alapú szerver
+* MongoDB adatbázis
+* Express framework
+
+## Teendők
+* Regisztráció
+* Jelszó hashelés
