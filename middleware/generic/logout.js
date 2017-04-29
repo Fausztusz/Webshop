@@ -8,7 +8,8 @@ module.exports = function (objectrepository) {
 
     var userModel = requireOption(objectrepository, 'userModel');
     return function (req, res, next) {
-        req.session.user =undefined;
+        req.session.user = undefined;
+        req.session.orderCount = undefined;
         return res.redirect('/');
     };
 

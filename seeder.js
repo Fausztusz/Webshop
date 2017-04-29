@@ -14,16 +14,7 @@ var users = [
         role: 1,
         email: 'but@why.com',
         picture: 'https://media.giphy.com/media/1M9fmo1WAFVK0/giphy.gif',
-        cart: [{
-            productid: '1',
-            quantity: 5
-        }, {
-            productid: '2',
-            quantity: 4
-        }, {
-            productid: '3',
-            quantity: 7
-        }]
+        cart: []
     }),
     new User({
         name: 'AstleyFan99',
@@ -31,16 +22,7 @@ var users = [
         role: 1,
         email: 'rick@roll.com',
         picture: './images/nevergonnagiveyouup.jpg',
-        cart: [{
-            productid: '1',
-            quantity: 5
-        }, {
-            productid: '2',
-            quantity: 4
-        }, {
-            productid: '3',
-            quantity: 7
-        }]
+        cart: []
     }),
     new User({
         name: 'KermitTheGreatAndPowerful',
@@ -48,16 +30,7 @@ var users = [
         role: 0,
         email: 'great@powerful.com',
         picture: './images/evilkermit.jpg',
-        cart: [{
-            productid: '1',
-            quantity: 5
-        }, {
-            productid: '2',
-            quantity: 4
-        }, {
-            productid: '3',
-            quantity: 7
-        }]
+        cart: []
     }),
     new User({
         name: 'admin',
