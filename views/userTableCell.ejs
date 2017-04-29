@@ -1,14 +1,17 @@
 <tr>
-    <td><%= user.name%></td>
+    <td><%= user.name %></td>
     <td>
-        <div style='background-image:url(<%= user.picture%>)' class="thumbnail custom"></div>
+        <div style='background-image:url(<%= user.picture %>)' class="thumbnail custom"></div>
     </td>
+    <td><%= user.role == 0 ? 'User' : 'Admin' %></td>
     <td>
-        <form method="post">
-        <button id="<%user._id%>" class="btn btn-primary ">Edit</button>
+        <form method="post" action="/editusers/edit">
+            <button type="submit" name="_id" value="<%= user._id %>" class="btn btn-primary ">Edit</button>
         </form>
     </td>
     <td>
-        <button id="<%user._id%>" class="btn btn-danger ">Delete</button>
+        <form method="post" action="/editusers/delete">
+            <button type="submit" name="_id" value="<%= user._id %>" class="btn btn-danger ">Delete</button>
+        </form>
     </td>
 </tr>

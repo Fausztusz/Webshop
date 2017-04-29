@@ -1,0 +1,18 @@
+<tr>
+    <td><%= product.name %></td>
+    <td><%= product.description %></td>
+    <td>
+        <div style='background-image:url(<%= product.picture %>)' class="thumbnail custom"></div>
+    </td>
+    <td><%= product.price %>$</td>
+    <form action="/createproduct/edit" method="post">
+        <td>
+            <button name="_id" value="<%= product._id%>" type="submit" class="btn btn-primary">Edit</button>
+        </td>
+    </form>
+    <form action="/createproduct/delete" method="post">
+        <td>
+            <button name="_id" value="<%= product._id%>" type="submit" class="btn btn-danger">Delete</button>
+        </td>
+    </form>
+</tr>

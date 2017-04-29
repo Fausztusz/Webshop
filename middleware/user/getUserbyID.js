@@ -13,7 +13,8 @@ module.exports = function (objectrepository) {
                 next();
             }
             else {
-                console.log('####### Query error #######' + err);
+                console.log('####### Query error at getUserbyID #######');
+                console.log(err);
                 next()
             }
         });

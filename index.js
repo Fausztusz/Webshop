@@ -19,7 +19,7 @@ var session = require('express-session');
 app.use(session({
     secret: 'I_double-dare_you',
     cookie: {
-        maxAge: 60000
+        maxAge: 86400
     },
     resave: true,
     saveUninitialized: false

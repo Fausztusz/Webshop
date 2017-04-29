@@ -12,7 +12,6 @@ module.exports = function (objectrepository) {
         if (req.method === "POST") {
             if (req.body.name.trim() && req.body.pwd.trim()) {
                 User.findOne(req.body).exec(function (err, user) {
-                    // console.log('USER ', user, '/USER');
                     if (err) { //If the query runs into an error
                         res.tpl.msg.push({type: "error", message: "Failed request"});
                         console.error(err);

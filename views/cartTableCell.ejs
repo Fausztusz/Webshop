@@ -5,11 +5,15 @@
         <div style='background-image:url(<%= product.picture%>)' class="thumbnail custom"></div>
     </td>
     <td><%= product.price%>$</td>
-    <td>szám</td>
+    <td><%=product.quantity%></td>
     <td>
-        <button id="<%= product._id%>" class="btn btn-warning custom">Remove</button>
+        <form method="post" action="/cart/delete">
+        <button name="product" value="<%=product._id%>" class="btn btn-warning custom">Remove</button>
+        </form>
     </td>
     <td>
-        <button id="<%= product._id%>" class="btn btn-success custom">Add to cart</button>
+        <form method="post" action="/cart/edit">
+        <button name="product" value="<%= product._id%>" class="btn btn-primary custom">Edit</button>
+        </form>
     </td>
 </tr>

@@ -13,15 +13,17 @@
     </tr>
     </thead>
     <tbody>
+    <form method="post" action="/createproduct/submit">
     <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="file"></td>
-        <td><input type="number" min="0"></td>
+        <td><input name="name" type="text"></td>
+        <td><input name="description" type="text"></td>
+        <td><input name="picture" type="text"></td>
+        <td><input name="price" type="number" min="0"></td>
         <td>
             <button type="submit" class="btn btn-primary custom">Submit</button>
         </td>
     </tr>
+    </form>
     </tbody>
 </table>
 
@@ -39,7 +41,7 @@
     </thead>
     <tbody>
     <% product.forEach(function(product){ %>
-    <%- include('productTableCell', {product: product}); %>
+    <%- include('createproductTableCell', {product: product}); %>
     <% }); %>
 
     </tbody>

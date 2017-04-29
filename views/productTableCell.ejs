@@ -1,16 +1,18 @@
 <tr>
-    <td><%= product.name%></td>
-    <td><%= product.description%></td>
+    <td><%= product.name %></td>
+    <td><%= product.description %></td>
     <td>
-        <div style='background-image:url(<%= product.picture%>)' class="thumbnail custom"></div>
+        <div style='background-image:url(<%= product.picture %>)' class="thumbnail custom"></div>
     </td>
-    <td><%= product.price%>$</td>
+    <td><%= product.price %>$</td>
     <form action="/cart/add" method="post">
-    <td><input name="quantity" type="number" min="0" value="0" class="inputfield"></td>
+        <td><input name="quantity" type="number" min="0" value="0" class="inputfield"></td>
 
-    <td class="total">0$</td>
-    <td>
-        <button name="_id" value="<%= product._id%>" id="submitButton" type="submit" class="btn btn-success custom">Add to cart</button>
-    </td>
+        <td class="total">0$</td>
+        <td>
+            <button name="_id" value="<%= product._id %>" id="submitButton" type="submit"
+                    class="btn btn-success custom">Add to cart
+            </button>
+        </td>
     </form>
 </tr>

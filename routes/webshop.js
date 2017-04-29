@@ -6,8 +6,10 @@ var mainRedirect = require('../middleware/generic/mainRedirect');
 var getUserbyIdMW = require('../middleware/user/getUserbyID');
 
 var getProductMW = require('../middleware/product/getProductList');
+var getProductbyIDMW = require('../middleware/product/getProductbyID');
 var updateProductMW = require('../middleware/product/updateProduct');
 var deleteProductMW = require('../middleware/product/deleteProduct');
+var createProductMW = require('../middleware/product/createProduct');
 var getUserListMW = require('../middleware/user/getUserList');
 
 var addtoCartMW = require('../middleware/user/addtoCart');
@@ -43,16 +45,23 @@ module.exports = function (app) {
     );
 
     /**
+     * Delete a product from the users cart
+     */
+    app.use('/cart/delete',
+        authMW(objectRepository),
+        deletefromCartMW(objectRepository),
+        function (req, res, next) {
+            res.redirect('/cart');
+        }
+    );
+
+    /**
      * Show the users cart
      */
     app.use('/cart',
         authMW(objectRepository),
         getUserbyIdMW(objectRepository),
         getCartMW(objectRepository),
-        function (req,res, next) {
-            console.log('### CART ###\n'+ res.tpl.cart + '### END CART ###');
-            return next();
-        },
         renderMW(objectRepository, 'cart')
     );
 
@@ -63,26 +72,57 @@ module.exports = function (app) {
         res.redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
     });
 
+
+    /**
+     * Create product form the users input
+     */
+    app.use('/createproduct/submit',
+        authMW(objectRepository),
+        gotPermit(objectRepository),
+        createProductMW(objectRepository),
+        function (req, res, next) {
+            res.redirect('/createproduct')
+        }
+    );
     /**
      * Delete product
      */
-    app.use('/product/:productid/delete',
+    app.use('/createproduct/delete',
         authMW(objectRepository),
         gotPermit(objectRepository),
-        getProductMW(objectRepository),
         deleteProductMW(objectRepository),
-        //simple redirect
         function (req, res, next) {
-        console.log('CART::::\n'+ res.tpl.cart);
-            return res.redirect('createproduct');
-        });
+            res.redirect('/createproduct')
+        }
+    );
+    /**
+     * Edit product
+     */
+    app.use('/createproduct/edit/submit',
+        authMW(objectRepository),
+        gotPermit(objectRepository),
+        updateProductMW(objectRepository),
+        function (req, res, next) {
+            res.redirect('/createproduct')
+        }
+    );
 
     /**
-     * Create product
+     * Get a product to edit
+     */
+    app.use('/createproduct/edit',
+        authMW(objectRepository),
+        gotPermit(objectRepository),
+        getProductbyIDMW(objectRepository),
+        renderMW(objectRepository, 'editproduct')
+    );
+
+    /**
+     * Get the create product page
      */
     app.use('/createproduct',
         authMW(objectRepository),
-        gotPermit(),
+        gotPermit(objectRepository),
         getProductMW(objectRepository),
         renderMW(objectRepository, 'createproduct')
     );

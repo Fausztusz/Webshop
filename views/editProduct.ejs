@@ -1,0 +1,55 @@
+<% include header %>
+<% include navbar %>
+
+<table class="table table-striped table-hover marginedContainer " style="width: 95%;">
+    <p class="description">Edit Product:</p>
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Submit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <form method="post" action="/createproduct/edit/submit">
+        <tr>
+            <td><input name="name" type="text"></td>
+            <td><input name="description" type="text"></td>
+            <td><input name="picture" type="text"></td>
+            <td><input name="price" type="number" min="0"></td>
+            <td>
+                <button name="_id" value="<%=product._id%>" type="submit" class="btn btn-primary custom">Submit</button>
+            </td>
+        </tr>
+    </form>
+    </tbody>
+</table>
+
+<table class="table table-striped table-hover marginedContainer" style="width: 95%;">
+    <p class="description">Current state</p>
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td>
+            <div style='background-image:url(<%= product.picture %>)' class="thumbnail custom"></div>
+        </td>
+        <td><%= product.price %>$</td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+</div>
+<% include footer %>

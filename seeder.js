@@ -101,7 +101,7 @@ var products = [
     }),
     new Product({
         name: 'Wubba Lubba Dubb Dub',
-        description: 'I\' in a great pain',
+        description: 'I\'m in a great pain',
         picture: './images/wubbalubbadubdub.jpg',
         price: 35
     }),
