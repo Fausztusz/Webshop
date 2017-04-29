@@ -1,5 +1,6 @@
 var requireOption = require('../common').requireOption;
 var User = require('../../models/user');
+var bcrypt = require('bcryptjs');
 
 /**
  *  Manages session start and creates session-id.
@@ -11,7 +12,7 @@ module.exports = function (objectrepository) {
     return function (req, res, next) {
         if (req.method === "POST") {
             if (req.body.name.trim() && req.body.pwd.trim()) {
-                User.findOne(req.body).exec(function (err, user) {
+                User.findOne({name:req.body.name}).exec(function (err, user) {
                     if (err) { //If the query runs into an error
                         res.tpl.msg.push({type: "error", message: "Failed request"});
                         console.error(err);
@@ -19,6 +20,10 @@ module.exports = function (objectrepository) {
                     }
                     if (!user) { //If the user does not exist
                         res.tpl.msg.push({type: "error", message: "Failed request"});
+                        return next();
+                    }
+                    if (!bcrypt.compareSync(req.body.pwd, user.pwd)) {
+                        res.tpl.msg.push({type: "error", message: "Hiba történt. Rossz felhasználónév, vagy jelszó."});
                         return next();
                     }
                     delete user.password;	//Remove the password from the user

@@ -5,12 +5,12 @@ var mongoose = require('mongoose');
 //mongoose.connect('mongodb://localhost/Webshop');
 var User = require('./models/user');
 var Product = require('./models/product');
-
+var bcrypt =require('bcryptjs');
 
 var users = [
     new User({
         name: 'ButWhy?',
-        pwd: 'Idontknow',
+        pwd: bcrypt.hashSync('Idontknow',bcrypt.genSaltSync(10)),
         role: 1,
         email: 'but@why.com',
         picture: 'https://media.giphy.com/media/1M9fmo1WAFVK0/giphy.gif',
@@ -18,7 +18,7 @@ var users = [
     }),
     new User({
         name: 'AstleyFan99',
-        pwd: 'KeepItRolli\'n',
+        pwd: bcrypt.hashSync('KeepItRollin',bcrypt.genSaltSync(10)),
         role: 1,
         email: 'rick@roll.com',
         picture: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
@@ -26,7 +26,7 @@ var users = [
     }),
     new User({
         name: 'KermitTheGreatAndPowerful',
-        pwd: 'NotJustaPuppet',
+        pwd: bcrypt.hashSync('NotJustaPuppet',bcrypt.genSaltSync(10)),
         role: 0,
         email: 'great@powerful.com',
         picture: 'http://i2.kym-cdn.com/entries/icons/original/000/021/668/kermie.JPG',
@@ -34,13 +34,13 @@ var users = [
     }),
     new User({
         name: 'admin',
-        pwd: 'admin',
+        pwd: bcrypt.hashSync('admin',bcrypt.genSaltSync(10)),
         role: 1,
         email: 'admin@admin.com'
     }),
     new User({
         name: 'user',
-        pwd: 'user',
+        pwd:  bcrypt.hashSync('user',bcrypt.genSaltSync(10)),
         role: 0,
         email: 'user@user.com'
     })
