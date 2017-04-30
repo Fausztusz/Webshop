@@ -52,7 +52,7 @@ module.exports = function (app) {
      */
     app.use('/editusers',
         authMW(objectRepository),
-        gotPermit(),
+        gotPermit(objectRepository),
         getUserListMW(objectRepository),
         renderMW(objectRepository, 'editUsers')
     );

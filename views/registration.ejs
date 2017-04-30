@@ -1,0 +1,19 @@
+<% include header %>
+<div class="siteWrapper">
+    <div class="siteTitle">MEME Shop</div>
+    <div class="middleBox">
+        <div class="description" style="margin: auto;">
+            <p style="font-size: 3em">Registration:</p>
+
+        <form action="/registration/submit" method="post">
+            <div class="high"><input name="name" placeholder="Username" type="text"></div>
+            <div class="high"><input name="pwd" placeholder="Password" type="password"></div>
+            <div class="high"><input name="email" placeholder="Email" type="text"></div>
+            <div class="high"><input name="picture" placeholder="Profile picture's URL" type="text"></div>
+            <div>
+                <button style="width: 45%;height: 3em;" class="btn btn-success">Sign up</button>
+            </div>
+        </form></div>
+    </div>
+</div>
+<% include footer %>

@@ -40,7 +40,7 @@ module.exports = function (app) {
     app.use('/cart/add',
         authMW(objectRepository),
         addtoCartMW(objectRepository),
-        mainRedirect()
+        mainRedirect(objectRepository)
     );
 
     /**
@@ -65,7 +65,7 @@ module.exports = function (app) {
     );
 
     /**
-     * Implements the proper end of the memeshoppin
+     * Implements the proper end of the meme shopping
      */
     app.use('/pay', function (req, res, next) {
         res.redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
@@ -125,6 +125,5 @@ module.exports = function (app) {
         getProductMW(objectRepository),
         renderMW(objectRepository, 'createproduct')
     );
-
 }
 ;

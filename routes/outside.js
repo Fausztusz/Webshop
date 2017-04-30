@@ -2,6 +2,7 @@ var mainRedirectMW = require('../middleware/generic/mainRedirect');
 var inverseAuthMW = require('../middleware/generic/inverseAuth');
 var loginMW = require('../middleware/generic/login');
 var logoutMW = require('../middleware/generic/logout');
+var registrationMW = require('../middleware/user/registrateUser');
 var renderMW = require('../middleware/generic/render');
 
 var userModel = require('../models/user');
@@ -33,7 +34,7 @@ module.exports = function (app) {
      */
     app.use('/logout',
         logoutMW(objectRepository),
-        mainRedirectMW()
+        mainRedirectMW(objectRepository)
     );
 
     /**
@@ -43,4 +44,17 @@ module.exports = function (app) {
         renderMW(objectRepository, 'forgetpassword')
     );
 
+    /**
+     * Submit the users registration
+     */
+    app.use('/registration/submit',
+        registrationMW(objectRepository),
+        mainRedirectMW(objectRepository)
+    );
+    /**
+     * Redirect to registration page
+     */
+    app.use('/registration',
+        renderMW(objectRepository, 'registration')
+    );
 };

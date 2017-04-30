@@ -16,4 +16,14 @@ Továbbá szerkeszthetik a többi felhasználót
 
 ## Teendők
 * Regisztráció
-* Jelszó hashelés
+* Törlés és módosítás előtt megerősítés
+
+##Használat
+* npm install
+* node seeder
+* node index
+~~~
+Belépés:
+username: admin pwd: admin
+username: user pwd: user
+~~~
