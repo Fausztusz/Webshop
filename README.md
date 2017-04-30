@@ -1,7 +1,7 @@
 # Házi feladat a Szerver Oldali JavaScript tárgyhoz
 
 #### Fauszt András Ákos 
-#####V04MEA
+##### V04MEA
 
 
 ## Feladat
@@ -18,7 +18,7 @@ Továbbá szerkeszthetik a többi felhasználót
 * Regisztráció
 * Törlés és módosítás előtt megerősítés
 
-##Használat
+## Használat
 * npm install
 * node seeder
 * node index
