@@ -3,13 +3,12 @@
  */
 
 var requireOption = require('../common').requireOption;
-var User = require('../../models/user');
 
-module.exports = function (objectrepository) {
+
+module.exports = function (objectRepository) {
+    var User = requireOption(objectRepository, 'userModel');
     return function (req, res, next) {
 
-        //Somehow this stuff pass a reference for the req.body
-        //So I save the _id before I delete it
         var options = {};
         options = req.body;
         var userID = req.body._id;
@@ -18,13 +17,14 @@ module.exports = function (objectrepository) {
         if (!options.name) delete options.name;
         if (!options.email) delete options.email;
         if (!options.picture) delete options.picture;
-        if (!(options.role == 0 || options.role == 1)) delete options.picture; //Prevents invalid role commit
+        if (!(options.role === 0 || options.role === 1)) delete options.role; //Prevents invalid role commit
 
 
         User.findByIdAndUpdate(userID, {$set: options}, function (err, cb) {
             if (err) {
                 console.log('##### Failed query at updateUser ######');
                 console.log(err);
+                res.error = err;
                 next();
             }
             else {

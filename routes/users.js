@@ -12,7 +12,7 @@ var userModel = require('../models/user');
 module.exports = function (app) {
 
     var objectRepository = {
-         userModel: userModel
+        userModel: userModel
     };
 
     /**

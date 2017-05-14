@@ -2,11 +2,11 @@
  * Get user from _id
  */
 var requireOption = require('../common').requireOption;
-var User = require('../../models/user');
 
-module.exports = function (objectrepository) {
+module.exports = function (objectRepository) {
+    var UserModel = requireOption(objectRepository, 'userModel');
     return function (req, res, next) {
-        User.findById(req.body._id, function (err, user) {
+        UserModel.findById(req.body._id, function (err, user) {
             if (!err) {
                 res.tpl.user = user;
                 next();

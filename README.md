@@ -1,4 +1,4 @@
-# Házi feladat a Szerver Oldali JavaScript tárgyhoz
+﻿# Házi feladat a Szerver Oldali JavaScript tárgyhoz
 
 #### Fauszt András Ákos 
 ##### V04MEA
@@ -20,6 +20,7 @@ Továbbá szerkeszthetik a többi felhasználót
 
 ## Használat
 * npm install
+* mongod futtatása
 * node seeder
 * node index
 ~~~
