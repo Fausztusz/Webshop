@@ -1,12 +1,11 @@
 var requireOption = require('../common').requireOption;
-var Product = require('../../models/product');
 
 /**
  * Update product if we have the data for it
  */
 module.exports = function (objectrepository) {
+    var Product = requireOption(objectrepository, 'productModel');
     return function (req, res, next) {
-
         //Somehow this stuff pass a reference for the req.body
         //So I save the _id before I delete it
         var options = {};
@@ -23,11 +22,10 @@ module.exports = function (objectrepository) {
             if (err) {
                 console.log('##### Failed query at updateProduct #####');
                 console.log(err);
-                return next();
+                res.error = err;
             }
-            else {
-                return next();
-            }
+            return next();
+
         });
 
 
